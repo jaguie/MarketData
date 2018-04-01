@@ -1,9 +1,7 @@
 package com.jaguie.marketdata.marketdata;
 
-import com.jaguie.marketdata.marketdata.infrastructure.connectors.alphavantage.model.Function;
-import com.jaguie.marketdata.marketdata.infrastructure.connectors.alphavantage.model.Interval;
-import com.jaguie.marketdata.marketdata.infrastructure.connectors.alphavantage.model.OutputSize;
-import com.jaguie.marketdata.marketdata.infrastructure.connectors.alphavantage.model.Symbol;
+import com.jaguie.marketdata.marketdata.infrastructure.connectors.alphavantage.AlphaVantageClient;
+import com.jaguie.marketdata.marketdata.infrastructure.connectors.alphavantage.model.*;
 import com.jaguie.marketdata.marketdata.infrastructure.connectors.alphavantage.AlphaVantageConnector;
 import com.jaguie.marketdata.marketdata.infrastructure.connectors.alphavantage.ApiParameterBuilder;
 import org.junit.Assert;
@@ -17,20 +15,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class MarketdataApplicationTests {
 
 	@Test
-	public void contextLoads() {
-		String apiKey = "";
-		int timeout = 5000;
-		AlphaVantageConnector alphaVantageConnector = new AlphaVantageConnector(apiKey, timeout);
-
-		//function=TIME_SERIES_DAILY
-		// symbol=MSFT
-		// datatype=json
-
-		String params = "function=TIME_SERIES_DAILY& symbol=MSFT&datatype=json";
-
-		//String request = alphaVantageConnector.getRequest();
-
+	public void contextLoads() throws Exception {
+		String apiKey = "50M3AP1K3Y";
+		int timeout = 3000;
+		AlphaVantageConnector apiConnector = new AlphaVantageConnector(apiKey, timeout);
+		AlphaVantageClient client = new AlphaVantageClient(apiConnector);
+        Daily msft = client.daily("MSFT");
 	}
+
 	@Test
 	public void timeSeries() {
 		ApiParameterBuilder apiParameterBuilder = new ApiParameterBuilder();
