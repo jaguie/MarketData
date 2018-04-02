@@ -16,12 +16,11 @@ public class MarketdataApplicationTests {
 
 	@Test
 	public void contextLoads() throws Exception {
-		String apiKey = "50M3AP1K3Y";
-		int timeout = 3000;
-		AlphaVantageConnector apiConnector = new AlphaVantageConnector(apiKey, timeout);
-		AlphaVantageClient client = new AlphaVantageClient(apiConnector);
-        Daily msft = client.daily("MSFT");
-	}
+
+        AlphaVantageClient alphaVantageClient = new AlphaVantageClient();
+        Daily msft = alphaVantageClient.daily("MSFT");
+        Assert.assertNotNull(msft);
+    }
 
 	@Test
 	public void timeSeries() {
