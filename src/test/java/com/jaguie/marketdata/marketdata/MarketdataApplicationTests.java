@@ -1,8 +1,7 @@
 package com.jaguie.marketdata.marketdata;
 
-import com.jaguie.marketdata.marketdata.infrastructure.connectors.alphavantage.AlphaVantageClient;
+import com.jaguie.marketdata.marketdata.infrastructure.connectors.alphavantage.AlphaVantageService;
 import com.jaguie.marketdata.marketdata.infrastructure.connectors.alphavantage.model.*;
-import com.jaguie.marketdata.marketdata.infrastructure.connectors.alphavantage.AlphaVantageConnector;
 import com.jaguie.marketdata.marketdata.infrastructure.connectors.alphavantage.ApiParameterBuilder;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,8 +16,8 @@ public class MarketdataApplicationTests {
 	@Test
 	public void contextLoads() throws Exception {
 
-        AlphaVantageClient alphaVantageClient = new AlphaVantageClient();
-        Daily msft = alphaVantageClient.daily("MSFT");
+        AlphaVantageService alphaVantageService = new AlphaVantageService();
+        Daily msft = alphaVantageService.daily("MSFT");
         Assert.assertNotNull(msft);
     }
 

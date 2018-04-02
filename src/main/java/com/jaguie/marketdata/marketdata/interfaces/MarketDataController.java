@@ -21,8 +21,8 @@ public class MarketDataController{
     }
 
     @RequestMapping( "/quotes")
-    public Daily getHisotQuotes(){
-        Daily msft = quoteService.getQuotesDaily("MSFT");
+    public List<Quote> getHisotQuotes() throws Exception {
+        List<Quote> msft = quoteService.getQuotesDaily("MSFT");
         return msft;
     }
 }
